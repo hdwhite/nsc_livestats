@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type:"image/x-icon" href="favicon.png">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script language ="javascript">
+			$(document).ready(function()
+			{
+				refreshData();
+			});
+
+			function refreshData()
+			{
+				$.ajax({
+					url: 'https://draco.hdwhite.org/qb/pacensc2023/livestats.html',
+					success: function(data)
+					{
+						outstr = data.slice(0, -1);
+						refreshcode = data.slice(-1);
+						document.getElementById("stats").innerHTML = outstr;
+						if (refreshcode > 0) //I would increment this and then increment the value on processgames.py to force a refresh if need be
+							location.reload(true);
+						console.log("Updated");
+					}
+				});
+				setTimeout(refreshData, 15000); //Refresh data every 15 seconds
+			}
+
+			function clickMenu(buttonName)
+			{
+				var clickedList = document.getElementById(buttonName);
+				if(clickedList.classList.contains('show'))
+				{
+					closeMenus();
+				}
+				else
+				{
+					closeMenus();
+					document.getElementById(buttonName).classList.add("show");
+				}
+			}
+			function closeMenus()
+			{
+				var dropdowns = document.getElementsByClassName("dropdown-content");
+				var i;
+				for(i = 0; i < dropdowns.length; i++)
+				{
+					var openDropdown = dropdowns[i];
+					if (openDropdown.classList.contains('show'))
+					{
+						openDropdown.classList.remove('show');
+					}
+				}
+			}
+			window.onclick = function(event)
+			{
+				if(!event.target.matches('.dropdownButton'))
+				{
+					closeMenus();
+				}
+			}
+		</script>
+		<style type="text/css">
+			@import url("https://draco.hdwhite.org/qb/pacensc2023/stats.css");
+		</style>
+		<title>2023 PACE NSC Live Scoreboard</title>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<img src="https://draco.hdwhite.org/qb/pacensc2023/pacelogo.png">
+			</div>
+			<div id="content">
+				<div id="menus">
+					<div class="dropdown">
+						<button onclick="clickMenu('standingsDropdown')" class="dropdownButton">Current Standings</button>
+						<div id="standingsDropdown" class="dropdown-content">
+							<a href="#Prelims">Prelims</a>
+							<a href="#Playoffs" class="playoffs">Playoffs</a>
+							<a href="#Supers" class="supers">Superplayoffs</a>
+			</div>
+					</div>
+					<div class="dropdown">
+						<button onclick="clickMenu('bracketDropdown')" class="dropdownButton">Detailed Bracket Info</button>
+						<div id="bracketDropdown" class="dropdown-content">
+							<!-- Bracket and team names are all hard-coded here, though they certainly don't need to be -->
+							<b>Superplayoff brackets</b>
+							<a href="#Championship">Championship</a>
+							<a href="#9-16">9-16</a>
+							<a href="#17-24">17-24</a>
+							<a href="#25-32">25-32</a>
+							<a href="#33-40">33-40</a>
+							<a href="#41-48">41-48</a>
+							<a href="#49-56">49-56</a>
+							<a href="#57-64">57-64</a>
+							<a href="#65-72">65-72</a>
+							<b>Playoff brackets</b>
+							<a href="#Arches">Arches</a>
+							<a href="#Big_Bend">Big Bend</a>
+							<a href="#Capitol_Reef">Capitol Reef</a>
+							<a href="#Death_Valley">Death Valley</a>
+							<a href="#Effigy_Mounds">Effigy Mounds</a>
+							<a href="#Fossil_Butte">Fossil Butte</a>
+							<a href="#Glacier">Glacier</a>
+							<a href="#Haleakala">Haleakala</a>
+							<a href="#Indiana_Dunes">Indiana Dunes</a>
+							<a href="#Jewel_Cave">Jewel Cave</a>
+							<a href="#Katmai">Katmai</a>
+							<a href="#Lassen_Volcanic">Lassen Volcanic</a>
+							<b>Prelim brackets</b>
+							<a href="#Acadia">Acadia</a>
+							<a href="#Badlands">Badlands</a>
+							<a href="#Carlsbad_Caverns">Carlsbad Caverns</a>
+							<a href="#Denali">Denali</a>
+							<a href="#Everglades">Everglades</a>
+							<a href="#Fort_McHenry">Fort McHenry</a>
+							<a href="#Grand_Canyon">Grand Canyon</a>
+							<a href="#Hot_Springs">Hot Springs</a>
+							<a href="#Isle_Royale">Isle Royale</a>
+							<a href="#Joshua_Tree">Joshua Tree</a>
+							<a href="#Kings_Canyon">Kings Canyon</a>
+							<a href="#Lake_Clark">Lake Clark</a>
+						</div>
+					</div>
+					<div class="dropdown">
+						<button onclick="clickMenu('teamDropdown')" class="dropdownButton">Detailed Team Info</button>
+						<div id="teamDropdown" class="dropdown-content">
+							<a href="#Barrington_A">Barrington A</a>
+							<a href="#Barrington_B">Barrington B</a>
+							<a href="#Belmont">Belmont</a>
+							<a href="#Belvidere">Belvidere</a>
+							<a href="#Canyon_Crest">Canyon Crest</a>
+							<a href="#Carbondale">Carbondale</a>
+							<a href="#Carl_Sandburg">Carl Sandburg </a>
+							<a href="#Chattahoochee_A">Chattahoochee A</a>
+							<a href="#Chattahoochee_B">Chattahoochee B</a>
+							<a href="#Choate_Rosemary_Hall">Choate Rosemary Hall</a>
+							<a href="#Cincinnati_Hills_Christian">Cincinnati Hills Christian</a>
+							<a href="#Dallas_County_Academic_Team">Dallas County</a>
+							<a href="#Detroit_Catholic_Central_A">Detroit Catholic Central A</a>
+							<a href="#Detroit_Catholic_Central_B">Detroit Catholic Central B</a>
+							<a href="#Detroit_Catholic_Central_C">Detroit Catholic Central C</a>
+							<a href="#Detroit_Country_Day">Detroit Country Day</a>
+							<a href="#Dunbar">Dunbar</a>
+							<a href="#Elkhorn_North">Elkhorn North</a>
+							<a href="#Heights">Heights</a>
+							<a href="#Hinsdale_Central">Hinsdale Central</a>
+							<a href="#Hoover_A">Hoover A</a>
+							<a href="#Hoover_B">Hoover B</a>
+							<a href="#Hunter_A">Hunter A</a>
+							<a href="#Hunter_B">Hunter B</a>
+							<a href="#Innovation_Academy_A">Innovation Academy A</a>
+							<a href="#Innovation_Academy_B">Innovation Academy B</a>
+							<a href="#Irvington_A">Irvington A</a>
+							<a href="#John_Adams_A">John Adams A</a>
+							<a href="#John_Adams_B">John Adams B</a>
+							<a href="#Johns_Creek_A">Johns Creek A</a>
+							<a href="#Johns_Creek_B">Johns Creek B </a>
+							<a href="#Kinkaid">Kinkaid</a>
+							<a href="#Lake_Highland">Lake Highland</a>
+							<a href="#Lincoln-Way_East">Lincoln-Way East</a>
+							<a href="#Maggie_Walker_A">Maggie Walker A</a>
+							<a href="#Maggie_Walker_B">Maggie Walker B</a>
+							<a href="#Maggie_Walker_C">Maggie Walker C</a>
+							<a href="#Mercer_County">Mercer County</a>
+							<a href="#Mexico">Mexico</a>
+							<a href="#Midtown">Midtown</a>
+							<a href="#Mira_Loma">Mira Loma</a>
+							<a href="#Moberly">Moberly</a>
+							<a href="#New_Brighton_Academic_Team">New Brighton</a>
+							<a href="#Norman">Norman</a>
+							<a href="#Norris">Norris</a>
+							<a href="#Northmont_A">Northmont A</a>
+							<a href="#Northmont_B">Northmont B</a>
+							<a href="#Parkway_West">Parkway West</a>
+							<a href="#Plymouth_Academic_Team">Plymouth</a>
+							<a href="#Richard_Montgomery">Richard Montgomery</a>
+							<a href="#Rockford_Auburn_A">Rockford Auburn A</a>
+							<a href="#Rockford_Auburn_B">Rockford Auburn B</a>
+							<a href="#Saint_Joseph">Saint Joseph</a>
+							<a href="#Solon">Solon</a>
+							<a href="#St._Mark's">St. Mark's</a>
+							<a href="#Stevenson_A">Stevenson A</a>
+							<a href="#Stevenson_B">Stevenson B</a>
+							<a href="#Thomas_Jefferson_A">Thomas Jefferson A</a>
+							<a href="#Thomas_Jefferson_B">Thomas Jefferson B</a>
+							<a href="#Thomas_Jefferson_C">Thomas Jefferson C</a>
+							<a href="#Thomas_Jefferson_D">Thomas Jefferson D</a>
+							<a href="#Troy">Troy</a>
+							<a href="#University_Lab">University Lab</a>
+							<a href="#Walter_Payton">Walter Payton</a>
+							<a href="#Washington">Washington</a>
+							<a href="#Waukee">Waukee</a>
+							<a href="#West_Point">West Point</a>
+							<a href="#William_Fremd">William Fremd </a>
+							<a href="#Winnebago">Winnebago</a>
+							<a href="#Winston_Churchill_A">Winston Churchill A</a>
+							<a href="#Winston_Churchill_B">Winston Churchill B</a>
+							<a href="#Woodland">Woodland</a>
+						</div>
+					</div>
+				</div>
+				<div id="intro">
+				<p>Welcome to the live standings page of the 2023 PACE NSC! Here you will find scores and standings of each of the 72 teams competing this weekend. You can use the menus above, or you can click on a team or bracket anywhere on the page to navigate around.</p>
+				</div>
+				<div id="stats">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+

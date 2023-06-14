@@ -1,0 +1,267 @@
+body
+{
+	background-color: #EEEEEE;
+	font-family: "Open Sans", sans-serif;
+}
+
+#container
+{
+	min-width: 350px;
+	max-width: 1440px;
+	margin: 0 auto;
+}
+
+#header
+{
+	text-align: center;
+}
+
+#header img
+{
+	width: 240px;
+	object-fit: contain;
+	max-width: 90%
+}
+
+#menus
+{
+	text-align: center;
+}
+
+.dropdownButton
+{
+	background-color: #1C6139;
+	color: white;
+	font-weight: bold;
+	padding: 10px;
+	margin: 10px;
+	font-size: 18px;
+	border: none;
+	cursor: pointer;
+}
+
+.dropdownButton:hover
+{
+	filter: brightness(90%);
+}
+
+.dropdown
+{
+	display: inline-block;
+	position: relative;
+}
+
+.dropdown a:hover
+{
+	background-color: #727272;
+	color: black;
+}
+
+.dropdown-content
+{
+	display: none;
+	position: absolute;
+	background-color: #dddddd;
+	width: calc(100% - 20px);
+	max-height: 400px;
+	margin: -10px 0 0 10px;
+	overflow: auto;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+a:visited
+{
+	color: blue;
+}
+
+.dropdown-content a
+{
+	color: black;
+	padding: 6px 8px;
+	text-decoration: none;
+	display: block;
+}
+
+.show
+{
+	display: block;
+}
+
+.jump
+{
+	text-decoration: none;
+	color: inherit;
+}
+
+.jump:visited
+{
+	color: black;
+}
+
+.jump:hover
+{
+	color: #1C6139;
+}
+
+#intro
+{
+	max-width: 720px;
+	margin: 0 auto;
+	font-size: 110%;
+}
+
+#standings
+{
+	text-align: center;
+}
+
+#bracket
+{
+	text-align: center;
+}
+
+#team
+{
+	text-align: center;
+}
+
+#team h3
+{
+	margin: 10px 0;
+}
+
+#team h4
+{
+	margin: 5px 0;
+}
+
+.flexy
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	gap: 20px;
+}
+
+.scrollable
+{
+	overflow-x: auto;
+}
+
+#bracket table
+{
+	max-width: 720px;
+}
+
+.tableblock
+{
+	display: inline-block;
+	overflow-x: auto;
+}
+
+table, th, td
+{
+	border: 1px solid black;
+}
+
+table
+{
+	border-collapse: collapse;
+}
+
+th, td
+{
+	padding: 4px;
+}
+
+th
+{
+	text-align: left;
+}
+
+#ongoing td
+{
+	border: 0px;
+}
+
+#ongoing th
+{
+	border-right: 0px;
+	border-left: 0px;
+}
+
+.divider
+{
+	border-bottom: 1px solid black;
+}
+
+#ongoing thead tr, #ongoing th
+{
+	background-color:#DDDDDD;
+}
+
+#standings tbody tr:nth-child(2n-1)
+{
+	background-color:#DDDDDD;
+}
+
+#bracket th
+{
+	vertical-align:bottom;
+}
+
+#bracket tbody
+{
+	text-align:center;
+}
+
+#bracket td:nth-child(1)
+{
+	text-align:left;
+	font-weight:bold;
+}
+
+#bracket table, #bracket th, #bracket td
+{
+	border: 1px solid black;
+}
+
+#team td:nth-child(3)
+{
+	text-align: center;
+}
+
+.win
+{
+	background-color: #90EE90;
+}
+
+.loss
+{
+	background-color: #F08080;
+}
+
+.ongoing
+{
+	background-color: #FFFF66;
+}
+
+.return
+{
+	text-align: center;
+	font-size: 110%;
+	padding-top: 10px;
+}
+
+h2
+{
+	text-align: center;
+	font-size: 225%;
+}
+
+h3
+{
+	text-align: center;
+	font-size: 150%;
+}
